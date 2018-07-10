@@ -129,4 +129,8 @@ class SiteController extends Controller
 {
     return $this->render('say', ['target' => $target]);
 }
+    public function actionAnnouncement()
+    {
+      return $this->render('announcement');
+    }
 }

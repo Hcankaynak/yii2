@@ -15,7 +15,7 @@ $config = [
           'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true
-                  ],    
+                  ],
 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -76,5 +76,6 @@ if (YII_ENV_DEV) {
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
+
 
 return $config;

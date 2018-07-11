@@ -20,11 +20,16 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['login', 'logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['login', 'signup'],
                         'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['logout'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -129,8 +134,12 @@ class SiteController extends Controller
 {
     return $this->render('say', ['target' => $target]);
 }
-    public function actionAnnouncement()
+    public function actionAnnouncements()
     {
       return $this->render('announcement');
+    }
+    public function actionUsers()
+    {
+      return $this->render('users-index');
     }
 }

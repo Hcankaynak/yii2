@@ -10,6 +10,10 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -22,9 +26,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+
 </head>
 <body>
 <?php $this->beginBody() ?>
+<img src="../../images/hubbm_logo.png" alt="hubbm_logo">
+<?= Html::img('../../images/hubbm_logo.png');?>
 
 <div class="wrap">
     <?php
@@ -41,9 +48,9 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             #['label' => 'About', 'url' => ['/site/about']],
             #['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Announcement', 'url' => ['/announcements']],
-            ['label' => 'Users', 'url' => ['/users']],
-            ['label' => 'Adverts', 'url' => ['/advert']],
+            ['label' => 'Announcement', 'url' => ['/announcements'], 'visible' => !(Yii::$app->user->isGuest)],
+            ['label' => 'Users', 'url' => ['/users'], 'visible' => !(Yii::$app->user->isGuest)],
+            ['label' => 'Adverts', 'url' => ['/advert'], 'visible' => !(Yii::$app->user->isGuest)],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -56,6 +63,9 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             )
+
+
+
         ],
     ]);
     NavBar::end();
@@ -72,9 +82,11 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-      <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+      <p class="pull-left">&copy; hubbm <?= date('Y') ?> </p>
+      <img src="hubbm_logo.png" alt="hubbm_logo">
+      <?= Html::img('hubbm_logo.png');?>
 
-      <p class="pull-right"><?= Yii::powered() ?></p>
+
     </div>
 </footer>
 

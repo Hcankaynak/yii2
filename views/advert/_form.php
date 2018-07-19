@@ -14,15 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'type')->dropDownList([ 'intern' => 'Intern', 'job' => 'Job', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'status')->dropDownList([ 'active' => 'Active', 'passive' => 'Passive', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'department')->dropDownList([ 'CS' => 'CS', 'EE' => 'EE', 'IE' => 'IE', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'advert_date')->textInput() ?>
+    <?= $form->field($model, 'long_description')->textarea(['rows' => 12])?>
 
     <?= $form->field($model, 'expired_date')->textInput() ?>
 
@@ -30,9 +24,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'company_website')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'comment')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quota')->textInput() ?>
+
+    
+
+    <?= $form->field($model, 'grade')->textInput() ?>
+
+    <?= $form->field($model, 'gpa')->textInput() ?>
+
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

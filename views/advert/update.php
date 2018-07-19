@@ -4,10 +4,12 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Advert */
+if (!(Yii::$app->user->identity->authority == 'Student')) {
 
-$this->title = 'Update Advert: ' . $model->id;
+
+$this->title = 'Update Advert: ' . $model->company_name;
 $this->params['breadcrumbs'][] = ['label' => 'Adverts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->company_name, 'url' => ['view', 'id' => $model->company_name]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="advert-update">
@@ -19,3 +21,5 @@ $this->params['breadcrumbs'][] = 'Update';
     ]) ?>
 
 </div>
+<?php
+}

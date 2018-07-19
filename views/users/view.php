@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
-
+if ((Yii::$app->user->identity->authority == 'admin')) {
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_name',
+            'username',
             'password',
             'name',
             'surname',
@@ -40,3 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<?php
+}
+ ?>

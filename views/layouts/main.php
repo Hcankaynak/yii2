@@ -30,14 +30,18 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<img src="../../images/hubbm_logo.png" alt="hubbm_logo">
-<?= Html::img('../../images/hubbm_logo.png');?>
+
 
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
+        //'brandLabel' => Yii::$app->name,
+        //'brandLabel' => '<img src="hubbm_logo.png">My Company',
+
+        'brandLabel' => '<img src="/images/huso.png" style="display:inline; vertical-align: center; height:32px;"> HUBBM',
+        //'brandImage' => '<img src="<?= Yii::$app->request->baseUrl ../images/hubbm_logo.png"> ',
+
+        //'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -49,8 +53,10 @@ AppAsset::register($this);
             #['label' => 'About', 'url' => ['/site/about']],
             #['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Announcement', 'url' => ['/announcements'], 'visible' => !(Yii::$app->user->isGuest)],
-            ['label' => 'Users', 'url' => ['/users'], 'visible' => !(Yii::$app->user->isGuest)],
+            ['label' => 'Users', 'url' => ['/users'], 'visible' => (!(Yii::$app->user->isGuest) && (Yii::$app->user->identity->authority=='admin')) ],
             ['label' => 'Adverts', 'url' => ['/advert'], 'visible' => !(Yii::$app->user->isGuest)],
+            ['label' => 'Carrer Advice', 'url' => ['/site/carrer'], 'visible' => !(Yii::$app->user->isGuest)],
+            ['label' => 'CV Pool', 'url' => ['/site/cvpool'], 'visible' => !(Yii::$app->user->isGuest)],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

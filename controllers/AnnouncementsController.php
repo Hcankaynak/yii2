@@ -8,6 +8,7 @@ use app\models\AnnouncementsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AnnouncementsController implements the CRUD actions for Announcements model.
@@ -26,6 +27,9 @@ class AnnouncementsController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+
+
         ];
     }
 
@@ -102,6 +106,7 @@ class AnnouncementsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+     
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();

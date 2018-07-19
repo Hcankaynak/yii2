@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
-
+if ((Yii::$app->user->identity->authority == 'admin')) {
 $this->title = 'Create Users';
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -19,3 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+
+<?php
+}
+ ?>

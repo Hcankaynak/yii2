@@ -14,15 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'summary')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
-
-    <?= $form->field($model, 'type')->dropDownList([ 'Urgent' => 'Urgent', 'Casual' => 'Casual', ], ['prompt' => '']) ?>
-
-    <?= $form->field($model, 'related_user_type')->dropDownList([ 'intern' => 'Intern', 'teacher' => 'Teacher', 'all' => 'All', ], ['prompt' => '']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

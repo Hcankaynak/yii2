@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use app\models\Users;
+use app\models\User;
 use app\models\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,7 +34,8 @@ class UsersController extends Controller
                     [
                         'actions' => ['index'],
                         'allow' => false,
-                        'roles' => ['?'],
+                        'roles' => ['?
+                        '],
                     ],
                     [
                         'allow' => true,
@@ -81,7 +82,7 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Users();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -130,12 +131,12 @@ class UsersController extends Controller
      * Finds the Users model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Users the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Users::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

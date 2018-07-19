@@ -15,11 +15,10 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+
 
     <?= $form->field($model, 'type') ?>
 
-    <?= $form->field($model, 'person') ?>
 
     <?= $form->field($model, 'status') ?>
 
@@ -29,15 +28,21 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'advert_date') ?>
 
-    <?php // echo $form->field($model, 'expired_date') ?>
+    <?php  echo $form->field($model, 'expired_date') ?>
 
-    <?php // echo $form->field($model, 'company_name') ?>
+    <?php  echo $form->field($model, 'company_name') ?>
 
     <?php // echo $form->field($model, 'company_website') ?>
 
     <?php // echo $form->field($model, 'comment') ?>
 
     <?php // echo $form->field($model, 'quota') ?>
+
+    <?php  echo $form->field($model, 'grade') ?>
+
+    <?php  echo $form->field($model, 'gpa') ?>
+
+    <?php // echo $form->field($model, 'long_description') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

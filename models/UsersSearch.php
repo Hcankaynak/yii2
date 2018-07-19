@@ -10,7 +10,7 @@ use app\models\Users;
 /**
  * UsersSearch represents the model behind the search form of `app\models\Users`.
  */
-class UsersSearch extends Users
+class UsersSearch extends User
 {
     /**
      * {@inheritdoc}
@@ -19,7 +19,7 @@ class UsersSearch extends Users
     {
         return [
             [['id'], 'integer'],
-            [['user_name', 'password', 'name', 'surname', 'email', 'authority', 'department'], 'safe'],
+            [['username', 'password', 'name', 'surname', 'email', 'authority', 'department'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UsersSearch extends Users
      */
     public function search($params)
     {
-        $query = Users::find();
+        $query = User::find();
 
         // add conditions that should always apply here
 
@@ -62,7 +62,7 @@ class UsersSearch extends Users
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'user_name', $this->user_name])
+        $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'surname', $this->surname])

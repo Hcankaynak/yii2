@@ -18,8 +18,9 @@ class AdvertSearch extends Advert
     public function rules()
     {
         return [
-            [['id', 'quota'], 'integer'],
-            [['type', 'person', 'status', 'description', 'department', 'advert_date', 'expired_date', 'company_name', 'company_website', 'comment'], 'safe'],
+            [['id', 'quota', 'grade'], 'integer'],
+            [['type', 'person', 'status', 'description', 'department', 'advert_date', 'expired_date', 'company_name', 'company_website', 'comment', 'long_description'], 'safe'],
+            [['gpa'], 'number'],
         ];
     }
 
@@ -47,6 +48,7 @@ class AdvertSearch extends Advert
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -63,6 +65,8 @@ class AdvertSearch extends Advert
             'advert_date' => $this->advert_date,
             'expired_date' => $this->expired_date,
             'quota' => $this->quota,
+            'grade' => $this->grade,
+            'gpa' => $this->gpa,
         ]);
 
         $query->andFilterWhere(['like', 'type', $this->type])
@@ -72,7 +76,8 @@ class AdvertSearch extends Advert
             ->andFilterWhere(['like', 'department', $this->department])
             ->andFilterWhere(['like', 'company_name', $this->company_name])
             ->andFilterWhere(['like', 'company_website', $this->company_website])
-            ->andFilterWhere(['like', 'comment', $this->comment]);
+            ->andFilterWhere(['like', 'comment', $this->comment])
+            ->andFilterWhere(['like', 'long_description', $this->long_description]);
 
         return $dataProvider;
     }

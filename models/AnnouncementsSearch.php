@@ -19,7 +19,7 @@ class AnnouncementsSearch extends Announcements
     {
         return [
             [['id'], 'integer'],
-            [['header', 'description', 'person', 'date', 'type', 'related_user_type'], 'safe'],
+            [['header', 'summary', 'Description', 'person', 'date', 'type', 'related_user_type'], 'safe'],
         ];
     }
 
@@ -47,6 +47,7 @@ class AnnouncementsSearch extends Announcements
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder' => ['id' => SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -64,7 +65,8 @@ class AnnouncementsSearch extends Announcements
         ]);
 
         $query->andFilterWhere(['like', 'header', $this->header])
-            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'summary', $this->summary])
+            ->andFilterWhere(['like', 'Description', $this->Description])
             ->andFilterWhere(['like', 'person', $this->person])
             ->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'related_user_type', $this->related_user_type]);

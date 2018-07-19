@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Advert */
 
-$this->title = $model->id;
+$this->title = $model->company_name;
 $this->params['breadcrumbs'][] = ['label' => 'Adverts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -14,6 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+<?php
+if (!(Yii::$app->user->identity->authority == 'Student')) {
+?>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -24,22 +27,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<?php
+}
+?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'type',
-            'person',
+            //'person',
             'status',
-            'description',
-            'department',
-            'advert_date',
-            'expired_date',
             'company_name',
             'company_website',
-            'comment',
-            'quota',
+            'long_description',
+            //'description',
+            //'department',
+            'advert_date',
+            'expired_date',
+            //'comment',
+            //'quota',
+            'grade',
+            'gpa',
+
         ],
     ]) ?>
 

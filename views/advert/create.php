@@ -5,6 +5,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Advert */
+if (!(Yii::$app->user->identity->authority == 'Student')) {
+
+
+
 
 $this->title = 'Create Advert';
 $this->params['breadcrumbs'][] = ['label' => 'Adverts', 'url' => ['index']];
@@ -19,3 +23,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<?php
+}

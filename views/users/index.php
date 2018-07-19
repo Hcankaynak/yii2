@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UsersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+if ((Yii::$app->user->identity->authority == 'admin')) {
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 
-            'user_name',
+            'username',
             'password',
             'name',
             'surname',
@@ -44,3 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+<?php
+}
+ ?>

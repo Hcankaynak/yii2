@@ -48,6 +48,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function beforeAction($action) { $this->enableCsrfValidation = false; return parent::beforeAction($action); }
     public function actions()
     {
         return [

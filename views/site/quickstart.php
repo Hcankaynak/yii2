@@ -13,7 +13,7 @@ function getClient()
 {
     $client = new Google_Client();
     $client->setApplicationName('Google Drive API PHP Quickstart');
-    $client->setScopes(Google_Service_Drive::DRIVE_METADATA_READONLY);
+    $client->setScopes(Google_Service_Drive::DRIVE);
     $client->setAuthConfig('credentials.json');
     $client->setAccessType('offline');
 
@@ -53,6 +53,22 @@ function getClient()
 $client = getClient();
 $service = new Google_Service_Drive($client);
 
+//Uploads images
+$fileMetadata = new Google_Service_Drive_DriveFile(array(
+    'name' => 'My Report',
+    'mimeType' => 'application/vnd.google-apps.spreadsheet'));
+$content = file_get_contents('report.csv');
+$file = $service->files->create($fileMetadata, array(
+    'data' => $content,
+    'mimeType' => 'text/csv',
+    'uploadType' => 'multipart',
+    'fields' => 'id'));
+printf("File ID: %s\n", $file->id);
+
+
+
+
+
 // Print the names and IDs for up to 10 files.
 $optParams = array(
   'pageSize' => 10,
@@ -68,29 +84,3 @@ if (count($results->getFiles()) == 0) {
         printf("%s (%s)\n", $file->getName(), $file->getId());
     }
 }
-
-$fileMetadata = new Google_Service_Drive_DriveFile(array(
-    'name' => 'photo.jpeg'));
-
-$content = file_get_contents('photo.jpeg');
-$file = $service->files->create($fileMetadata, array(
-    'data' => $content,
-    'mimeType' => 'image/jpeg',
-    'uploadType' => 'multipart',
-    'fields' => 'id'));
-printf("File ID: %s\n", $file->id);
-
-
-/*
-$fileMetadata = new Google_Service_Drive_DriveFile(array(
-    ‘name’ =>‘sdfgyhjk.jpeg’));
-‘mime’ => ‘application/vnd.google-apps.spreadsheet’));
-$content = file_get_contents(‘uploads/batman.jpeg’);
-
-$file = $service->files->create($fileMetadata, array(
-    ‘data’ => $content ,
-     ‘mimeType’ =>‘image/jpeg’,
-      ‘uploadType’ => ‘multipart ’,
-      ‘fields’ => ‘id’));
-printf(“File ID: %s\n”,$file->id);
-*/

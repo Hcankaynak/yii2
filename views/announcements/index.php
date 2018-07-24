@@ -12,7 +12,7 @@ use yii\widgets\LinkSorter;
 /* @var $searchModel app\models\AnnouncementsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Announcements';
+$this->title = 'Announcements' ;
 $this->params['breadcrumbs'][] = $this->title;
 
 //$query = app\models\Announcements::find()->all();

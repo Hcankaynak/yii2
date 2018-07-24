@@ -87,10 +87,14 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
-      <p class="pull-left">&copy; hubbm <?= date('Y') ?> </p>
-      <img src="hubbm_logo.png" alt="hubbm_logo">
-      <?= Html::img('hubbm_logo.png');?>
+    <div class="container" style="width:100%">
+      <p class="pull-left">&copy; hubbm       <?= date('Y') ?> </p>
+      &nbsp&nbsp
+      <a href="https://www.facebook.com/hubmb/">
+      <img src="/images/facebook.png" style="height:32px;width:32px;" display: "table-cell"; >
+
+      <a href="https://twitter.com/hubmb">
+      <img src="/images/twitter.png"  style="height:32px;width:32px;" >
 
 
     </div>

@@ -38,7 +38,7 @@ we can share your CV with them. They will contact directly you. If you don't lik
 			$content = mysqli_escape_string ($con,$content );
 
 
-    	$folder="";
+    	$folder="uploads/";
 
     	// new file size in KB
     	$new_size = $file_size/1024;
